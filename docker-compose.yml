@@ -14,7 +14,7 @@ services:
             update_config:
                 parallelism: 2
                 delay: 15s
-                
+
         build: .
         environment:
             - PORT=3000
@@ -24,8 +24,8 @@ services:
     mongo:
         image: mongo
         environment:
-            - MONGO_INITDB_ROOT_USERNAME=rafiadw
-            - MONGO_INITDB_ROOT_PASSWORD=12345
+            - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+            - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
         volumes:
             - mongo-db:/data/db
 
