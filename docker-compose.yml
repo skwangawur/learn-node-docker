@@ -15,7 +15,7 @@ services:
                 parallelism: 2
                 delay: 15s
 
-        build: .
+        image: rafiadw/learn_node_docker
         environment:
             - PORT=3000
         depends_on:
