@@ -7,6 +7,14 @@ services:
         volumes:
             - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     node_app:
+        deploy:
+            replicas: 8
+            restart_policy:
+                condition: any
+            update_config:
+                parallelism: 2
+                delay: 15s
+                
         build: .
         environment:
             - PORT=3000
@@ -16,8 +24,8 @@ services:
     mongo:
         image: mongo
         environment:
-            - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-            - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+            - MONGO_INITDB_ROOT_USERNAME=rafiadw
+            - MONGO_INITDB_ROOT_PASSWORD=12345
         volumes:
             - mongo-db:/data/db
 
